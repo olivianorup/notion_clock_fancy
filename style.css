@@ -7,16 +7,14 @@
 }
 
 body {
-    font-family: monospace, 'Courier New', Courier;
+    font-family: 'Poppins', monospace, 'Courier New', Courier;
     background-color: #191919;
     text-align: center;
-    justify-content: center;
-    padding: 5px;
+    padding: 15px;
 }
 
 .wrap {
     text-align: center;
-    margin-top: 5px;
 }
 
 h1 {
@@ -44,7 +42,6 @@ h1 {
     justify-content: center;
     gap: 40px;
     color: #d4d4d4;
-    font-family: 'Poppins';
 }
 
 #time .circle {
