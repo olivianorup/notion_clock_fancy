@@ -16,7 +16,7 @@ function week(){
     var today = new Date();
     var weekNumber = getWeekNumber(today);
 
-    document.getElementById("week").innerHTML = "Uge" + " " + weekNumber;
+    document.getElementById("week").innerHTML = "Uge" + "<spacer>"+" "+"</spacer>" + weekNumber;
 }
 week();
 
@@ -33,7 +33,7 @@ function date(){
 
     var monthList = ["Januar", "Februar", "Marts", "April", "Maj", "Juni", "Juli", "August", "September", "Oktober", "November", "December"]
 
-    document.getElementById("date").innerHTML = dayList[day] + " " + date + ". " + monthList[month] + " " + year;
+    document.getElementById("date").innerHTML = dayList[day] + "<spacer>"+" "+"</spacer>" + "<spacer>"+" "+"</spacer>" + "<spacer>"+" "+"</spacer>" + date + "<spacer>"+". "+"</spacer>" + monthList[month] + "<spacer>"+" "+"</spacer>" + year;
 }
 date();
 
