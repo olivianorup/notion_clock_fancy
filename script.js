@@ -1,13 +1,13 @@
 function getWeekNumber(date){
     const tempDate = new Date(date.getTime());
 
-    tempDate.setDate(tempDate.getDate() - tempDate.getDay() +1);
+    tempDate.setDate(tempDate.getDate() - tempDate.getDay() + 1);
 
     const startOfYear = new Date(tempDate.getFullYear(), 0, 1);
 
     const daysDifference = Math.floor((tempDate - startOfYear) / (24 * 60 * 60 * 1000));
 
-    const weekNumber = Math.ceil((daysDifference + 1) / 7);
+    const weekNumber = Math.ceil((daysDifference) / 7);
     
     return weekNumber;
 }
