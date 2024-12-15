@@ -7,7 +7,7 @@ function getWeekNumber(date){
 
     const daysDifference = Math.floor((tempDate - startOfYear) / (24 * 60 * 60 * 1000));
 
-    const weekNumber = Math.ceil((daysDifference) / 7);
+    const weekNumber = Math.ceil(((daysDifference + 1) - 1) / 7);
     
     return weekNumber;
 }
