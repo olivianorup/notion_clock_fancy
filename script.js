@@ -1,22 +1,29 @@
-function getWeekNumber(date){
-    const tempDate = new Date(date.getTime());
+function getWeekNumber(date) {
+    // Lav en kopi af den givne dato i UTC for at undgå tidszoneproblemer
+    const d = new Date(Date.UTC(date.getFullYear(), date.getMonth(), date.getDate()));
 
-    tempDate.setDate(tempDate.getDate() - tempDate.getDay() + 1);
+    // ISO 8601 uger starter mandag, men getUTCDay() giver søndag som 0.
+    // Hvis dayNum er 0, sæt den til 7 for at matche ISO logikken.
+    const dayNum = d.getUTCDay() === 0 ? 7 : d.getUTCDay();
 
-    const startOfYear = new Date(tempDate.getFullYear(), 0, 1);
+    // Flyt datoen til nærmeste torsdag (4 dage frem fra mandag)
+    // Dette skyldes at uge 1 er defineret som ugen der indeholder årets første torsdag.
+    d.setUTCDate(d.getUTCDate() + (4 - dayNum));
 
-    const daysDifference = Math.floor((tempDate - startOfYear) / (24 * 60 * 60 * 1000));
+    // Hent årets start (1. januar, kl. 00:00:00)
+    const yearStart = new Date(Date.UTC(d.getUTCFullYear(), 0, 1));
 
-    const weekNumber = Math.ceil(((daysDifference + 1) - 1) / 7);
-    
-    return weekNumber;
+    // Beregn uge nummer: divider antallet af dage siden årets start med 7
+    const weekNo = Math.ceil((((d - yearStart) / 86400000) + 1) / 7);
+
+    return weekNo;
 }
 
-function week(){
+function week() {
     var today = new Date();
-    var weekNumber = getWeekNumber(today);
+    var weekNo = getWeekNumber(today);
 
-    document.getElementById("week").innerHTML = "Uge" + "<spacer>"+" "+"</spacer>" + weekNumber;
+    document.getElementById("week").innerHTML = "Uge" + "<spacer>"+" "+"</spacer>" + weekNo;
 }
 week();
 
